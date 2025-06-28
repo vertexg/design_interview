@@ -1,10 +1,22 @@
 services:
+  # APIサーバー (Go)
+  api:
+    build:
+      context: .. # 親ディレクトリをビルドコンテキストとして使用
+      dockerfile: .docker/Dockerfile
+    container_name: go_api_server
+    ports:
+      - "8080:8080"
+    # .env ファイルを読み込んでコンテナ内の環境変数として設定
+    env_file:
+      - .env
+
   postgres:
     image: postgres:16
     container_name: postgres16_db
     restart: always
     ports:
-      - 5432:5432
+      - "5433:5432"
     volumes:
       - /var/lib/postgresql/data
     environment:
