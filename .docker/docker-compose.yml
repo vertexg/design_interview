@@ -7,9 +7,13 @@ services:
     container_name: go_api_server
     ports:
       - "8080:8080"
-    # .env ファイルを読み込んでコンテナ内の環境変数として設定
-    env_file:
-      - .env
+    # APIがDBに接続するための環境変数を設定
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=myuser
+      - DB_PASSWORD=mysecretpassword
+      - DB_NAME=myappdb
 
   postgres:
     image: postgres:16

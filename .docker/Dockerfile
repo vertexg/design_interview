@@ -6,7 +6,7 @@ COPY go.mod go.sum ./
 # Goの依存関係をダウンロード
 RUN go mod download
 # ソースコードをコンテナにコピー
-COPY .. .
+COPY ../ .
 # ビルドを実行
 RUN go build -o main cmd/main.go
 FROM alpine:latest

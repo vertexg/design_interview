@@ -4,7 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Controller struct definition
 type HealthController struct{}
 
 // 新しいHealthControllerのインスタンスを生成
