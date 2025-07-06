@@ -1,4 +1,4 @@
-
+# --- ステージ 1: builder ---
 FROM golang:1.24.4 AS builder
 ## コンテナでの作業を/appディレクトリに設定
 WORKDIR /app
@@ -8,7 +8,7 @@ COPY go.mod go.sum ../
 RUN go mod download
 
 # --- ステージ 2: dev ---
-# 開発用ステージ air環境を構築
+# 開発用ステージ airを構築
 FROM builder AS dev
 # airをインストール
 RUN go install github.com/air-verse/air@latest
