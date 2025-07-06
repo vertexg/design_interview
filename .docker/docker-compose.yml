@@ -1,10 +1,26 @@
 services:
+  # APIサーバー (Go)
+  api:
+    build:
+      context: .. # 親ディレクトリをビルドコンテキストとして使用
+      dockerfile: .docker/Dockerfile
+    container_name: go_api_server
+    ports:
+      - "8080:8080"
+    # APIがDBに接続するための環境変数を設定
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=myuser
+      - DB_PASSWORD=mysecretpassword
+      - DB_NAME=myappdb
+
   postgres:
     image: postgres:16
     container_name: postgres16_db
     restart: always
     ports:
-      - 5432:5432
+      - "5433:5432"
     volumes:
       - /var/lib/postgresql/data
     environment:
