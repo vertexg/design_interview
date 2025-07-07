@@ -16,6 +16,6 @@ func (c *HealthController) routes(router *gin.Engine) {
 }
 func (c *HealthController) HealthCheck(ctx *gin.Context) {
 	ctx.JSON(200, gin.H{
-		"status": "300 OK",
+		"status": "200 OK",
 	})
 }
